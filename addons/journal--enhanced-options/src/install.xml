@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+<insertfile>_inc/summary0.txt</insertfile>
+-->
+
+<modification>
+	<name>#ocmod.space: <insertvar>MODCODE</insertvar></name>
+	<code><insertvar>MODFILE</insertvar></code>
+	<version><insertvar>MODVERS</insertvar></version>
+	<author><insertvar>AUTHOR</insertvar></author>
+	<link><insertvar>XMLLINK</insertvar></link>
+
+	<file path="catalog/controller/journal3/price.php" error="log">
+		<operation error="log">
+			<search>
+				<![CDATA[if ($product_info) {]]>
+			</search>
+			<add position="after">
+				<![CDATA[				/// << equal-sign|enhanced-options
+			if ((float)$product_info['special']) {
+				$co = (float)$product_info['special'] / (float)$product_info['price'];
+			} else {
+				$co = 1;
+			}
+			/// >> equal-sign|enhanced-options]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$special_options_price = $options_price]]>
+			</search>
+			<add position="replace">
+				<![CDATA[$special_options_price = $options_price * $co]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$tax_options_price = $options_price]]>
+			</search>
+			<add position="replace">
+				<![CDATA[$tax_options_price = $options_price * $co]]>
+			</add>
+		</operation>
+
+	</file>
+</modification>

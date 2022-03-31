@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+<insertfile>_inc/summary0.txt</insertfile>
+-->
+
+<modification>
+	<name>#ocmod.space: <insertvar>MODCODE</insertvar></name>
+	<code><insertvar>MODFILE</insertvar></code>
+	<version><insertvar>MODVERS</insertvar></version>
+	<author><insertvar>AUTHOR</insertvar></author>
+	<link><insertvar>XMLLINK</insertvar></link>
+
+	<file path="system/library/cart/cart.php" error="log">
+		<operation error="log">
+			<search>
+				<![CDATA[$stock = true;]]>
+			</search>
+			<add position="after">
+				<![CDATA[			/// << Equal Sign
+			$has_eql_price = false;
+			$has_eql_points = false;
+			$has_eql_weight = false;
+			/// >> Equal Sign]]>
+			</add>
+		</operation>
+
+<!--  Add equals sign -->
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_value_query->row['price_prefix'] == '+']]>
+			</search>
+			<add position="replace">
+				<![CDATA[$option_value_query->row['price_prefix'] == '+' || $option_value_query->row['price_prefix'] == '=']]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_value_query->row['points_prefix'] == '+']]>
+			</search>
+			<add position="replace">
+				<![CDATA[$option_value_query->row['points_prefix'] == '+' || $option_value_query->row['points_prefix'] == '=']]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_value_query->row['weight_prefix'] == '+']]>
+			</search>
+			<add position="replace">
+				<![CDATA[$option_value_query->row['weight_prefix'] == '+' || $option_value_query->row['weight_prefix'] == '=']]>
+			</add>
+		</operation>
+
+<!-- Add sum fixes -->
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_value_query->row['price_prefix'] == '+' || $option_value_query->row['price_prefix'] == '=']]>
+			</search>
+			<add position="after">
+				<![CDATA[										if ($option_value_query->row['price'] != 0 && $option_value_query->row['price_prefix'] == '=') {
+											$has_eql_price = true;
+										}
+				]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_value_query->row['points_prefix'] == '+' || $option_value_query->row['points_prefix'] == '=']]>
+			</search>
+			<add position="after">
+				<![CDATA[										if ($option_value_query->row['points']  != 0 && $option_value_query->row['points_prefix'] == '=') {
+											$has_eql_points = true;
+										}
+				]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_value_query->row['weight_prefix'] == '+' || $option_value_query->row['weight_prefix'] == '=']]>
+			</search>
+			<add position="after">
+				<![CDATA[										if ($option_value_query->row['weight'] != 0 && $option_value_query->row['weight_prefix'] == '=') {
+											$has_eql_weight = true;
+										}
+				]]>
+			</add>
+		</operation>
+
+<!--  -->
+
+		<operation error="log">
+			<search>
+				<![CDATA[$product_data[] = array(]]>
+			</search>
+			<add position="before">
+				<![CDATA[
+				/// << Equal Sign
+				if ($has_eql_price) {
+					$option_price -= $price;
+				}
+
+				if ($product_query->row['points'] && $has_eql_points) {
+					$option_points -= $product_query->row['points'];
+				}
+
+				if ($has_eql_weight) {
+					$option_weight -= $product_query->row['weight'];
+				}
+				/// >> Equal Sign
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/sale/order.php" error="log">
+		<operation error="log" info="Fix">
+			<ignoreif regex="false"><![CDATA[$option_weight = 0;]]></ignoreif>
+			<search>
+				<![CDATA[$option_weight = '';]]>
+			</search>
+			<add position="replace">
+				<![CDATA[$option_weight = 0;]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_weight = 0;]]>
+			</search>
+			<add position="after">
+				<![CDATA[					$has_eql_weight = false;  /// Equal Sign]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[$option_weight -= $product_option_value_info['weight'];]]>
+			</search>
+			<add position="after">
+				<![CDATA[
+								/// << Equal Sign
+								} elseif ($product_option_value_info['weight_prefix'] == '=') {
+									$option_weight += $product_option_value_info['weight'];
+
+								/// >> Equal Sign
+								]]>
+			</add>
+		</operation>
+
+		<operation error="log" info="preliminary fix for OC 2.1.x">
+			<ignoreif regex="false" info="for 2.1.x"><![CDATA[(float)$option_weight]]></ignoreif>
+			<search>
+				<![CDATA[$this->weight->format(($product_info['weight'] + $option_weight)]]>
+			</search>
+			<add position="replace">
+				<![CDATA[$this->weight->format(($product_info['weight'] + (float)$option_weight)]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<search>
+				<![CDATA[(float)$option_weight]]>
+			</search>
+			<add position="replace">
+				<![CDATA[(!empty($has_eql_weight) ? (float)$option_weight - $product_info['weight'] : (float)$option_weight)]]>
+			</add>
+		</operation>
+	</file>
+
+	<file path="admin/view/template/catalog/product_form.*" error="log" info="oc v2.3.x.x">
+
+<!-- OC 2.1+ -->
+		<operation error="log">
+	    	<ignoreif regex="false" info="for 2.1.x"><![CDATA[{{ header }}]]></ignoreif>
+			<search>
+		  		<![CDATA[<?php if ($product_option_value['price_prefix'] == '-') { ?>]]>
+				</search>
+		  	<add position="before">
+				<![CDATA[                                  <?php if ($product_option_value['price_prefix'] == '=') { ?>
+                                  <option value="=" selected="selected">=</option>
+                                  <?php } else { ?>
+                                  <option value="=">=</option>
+                                  <?php } ?>]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<ignoreif regex="false" info="for 2.1.x"><![CDATA[{{ header }}]]></ignoreif>
+			<search>
+		  		<![CDATA[<?php if ($product_option_value['points_prefix'] == '-') { ?>]]>
+				</search>
+		  	<add position="before">
+				<![CDATA[                                  <?php if ($product_option_value['points_prefix'] == '=') { ?>
+                                  <option value="=" selected="selected">=</option>
+                                  <?php } else { ?>
+                                  <option value="=">=</option>
+                                  <?php } ?>]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<ignoreif regex="false" info="for 2.1.x"><![CDATA[{{ header }}]]></ignoreif>
+			<search>
+		  		<![CDATA[<?php if ($product_option_value['weight_prefix'] == '-') { ?>]]>
+				</search>
+		  	<add position="before">
+				<![CDATA[                                  <?php if ($product_option_value['weight_prefix'] == '=') { ?>
+                                  <option value="=" selected="selected">=</option>
+                                  <?php } else { ?>
+                                  <option value="=">=</option>
+                                  <?php } ?>]]>
+			</add>
+		</operation>
+
+<!-- OC 3.0+ -->
+		<operation error="log">
+			<ignoreif regex="false" info="for 3.0.x"><![CDATA[<?php echo $header; ?>]]></ignoreif>
+			<search>
+				<![CDATA[{% if product_option_value.price_prefix == '-' %}]]>
+				</search>
+			<add position="before">
+				<![CDATA[
+								{% if product_option_value.price_prefix == '=' %}
+
+
+								<option value="=" selected="selected">=</option>
+
+
+								  {% else %}
+
+
+								<option value="=">=</option>
+
+
+								  {% endif %}
+						]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<ignoreif regex="false" info="for 3.0.x"><![CDATA[<?php echo $header; ?>]]></ignoreif>
+			<search>
+				<![CDATA[{% if product_option_value.points_prefix == '-' %}]]>
+			</search>
+			<add position="before">
+				<![CDATA[
+								  {% if product_option_value.points_prefix == '=' %}
+
+
+								<option value="=" selected="selected">=</option>
+
+
+								  {% else %}
+
+
+								<option value="=">=</option>
+
+
+								  {% endif %}
+						]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<ignoreif regex="false" info="for 3.0.x"><![CDATA[<?php echo $header; ?>]]></ignoreif>
+			<search>
+				<![CDATA[{% if product_option_value.weight_prefix == '-' %}]]>
+			</search>
+			<add position="before">
+				<![CDATA[
+								  {% if product_option_value.weight_prefix == '=' %}
+
+
+								<option value="=" selected="selected">=</option>
+
+
+								  {% else %}
+
+
+								<option value="=">=</option>
+
+
+								  {% endif %}
+							]]>
+			</add>
+		</operation>
+
+		<operation error="log">
+			<!-- <ignoreif regex="false" info="for 3.0.x"><![CDATA[<?php echo $header; ?>]]></ignoreif> -->
+			<search>
+				<![CDATA[<option value="+">+</option>';]]>
+			</search>
+			<add position="after">
+				<![CDATA[  html += '    <option value="=">=</option>';]]>
+			</add>
+		</operation>
+
+	</file>
+</modification>
