@@ -13,7 +13,7 @@ Compatible with OpenCart 2.x-3.x.
 [Admin](http://ocmod.freevar.com/oc3020/a/admin/index.php?route=catalog/product)  
 
 ## License
-[MIT](https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/LICENSE.txt)
+[MIT License](https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/LICENSE.txt)
 
 ## Download
 [Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=34383)
