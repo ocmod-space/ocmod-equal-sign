@@ -1,11 +1,11 @@
 # Equal Sign|Journal
 
 ## Description
-Equal Sign|Journal is an extension designed to use the equal sign as a product option prefix in an OpenCart store with the Journal template installed.
-Compatible with OpenCart 3.x.
+**Equal Sign|Journal** is an extension that allows to use the equal sign as a price prefix of product options.  
+Compatible with OpenCart 3.x with installed Journal 3.x theme.
 
 ## Features
-* Adds the equal sign to use as a product option prefix.
+* Allows to use the equal sign as a price prefix of product options.
 * Does not modify system files (OCMOD).
 
 ## Information
