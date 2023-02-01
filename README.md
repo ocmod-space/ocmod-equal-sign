@@ -3,7 +3,7 @@
 ## Description
 **Equal Sign** is an extension that allows to use the equal sign as a price prefix of product options. [Read more...](./module/README.md)
 
-**Equal Sign|Journal** is an extension that allows to use the equal sign as a price prefix of product options. **Equal Sign|Journal** is an extension that allows to use the equal sign as a price prefix of product options. [Read more...](./addons/journal/README.md)
+**Equal Sign|Journal** is an extension that allows to use the equal sign as a price prefix of product options. [Read more...](./addons/journal/README.md)
 
 
 ## Download
