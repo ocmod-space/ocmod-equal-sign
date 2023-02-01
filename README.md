@@ -7,4 +7,5 @@
 
 
 ## Download
-[Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=34383)
+Equal Sign on [Opencart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=34383)  
+Equal Sign|Journal on [OpenCart Marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=38532)  
