@@ -17,11 +17,11 @@
 				<![CDATA[$stock = true;]]>
 			</search>
 			<add position="after">
-				<![CDATA[			/// << Equal Sign
+				<![CDATA[			/// << <insertvar>MODCODE</insertvar>
 			$has_eql_price = false;
 			$has_eql_points = false;
 			$has_eql_weight = false;
-			/// >> Equal Sign]]>
+			/// >> <insertvar>MODCODE</insertvar>]]>
 			</add>
 		</operation>
 
@@ -100,7 +100,7 @@
 			</search>
 			<add position="before">
 				<![CDATA[
-				/// << Equal Sign
+				/// << <insertvar>MODCODE</insertvar>
 				if ($has_eql_price) {
 					$option_price -= $price;
 				}
@@ -112,7 +112,7 @@
 				if ($has_eql_weight) {
 					$option_weight -= $product_query->row['weight'];
 				}
-				/// >> Equal Sign
+				/// >> <insertvar>MODCODE</insertvar>
 				]]>
 			</add>
 		</operation>
@@ -134,7 +134,7 @@
 				<![CDATA[$option_weight = 0;]]>
 			</search>
 			<add position="after">
-				<![CDATA[					$has_eql_weight = false;  /// Equal Sign]]>
+				<![CDATA[					$has_eql_weight = false;  /// <insertvar>MODCODE</insertvar>]]>
 			</add>
 		</operation>
 
@@ -144,11 +144,11 @@
 			</search>
 			<add position="after">
 				<![CDATA[
-								/// << Equal Sign
+								/// << <insertvar>MODCODE</insertvar>
 								} elseif ($product_option_value_info['weight_prefix'] == '=') {
 									$option_weight += $product_option_value_info['weight'];
 
-								/// >> Equal Sign
+								/// >> <insertvar>MODCODE</insertvar>
 								]]>
 			</add>
 		</operation>
