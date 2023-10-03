@@ -1,8 +1,12 @@
 # Change log
 
+## [3.0.0] - 2023.10.03:
+### Internal
+- Improved code.
+
 ## [2.3.2] - 2022.03.01:
 ### Internal
-- Refine code.
+- Code beautified.
 
 ## [2.3.1] - 2021.01.20:
 ### Fixed
