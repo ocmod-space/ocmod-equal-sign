@@ -9,7 +9,7 @@ Compatible with OpenCart 2.x-3.x.
 * Does not modify system files (OCMOD).
 
 ## Live demo
-* A [product](https://demo.ocmod.space/a/iphone) whose option prices are formed by equal signs.
+* [Store Front](https://demo.ocmod.space/a/).
 * [Administration](https://demo.ocmod.space/a/admin/index.php?route=catalog/product).
 
 ## License
