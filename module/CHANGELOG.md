@@ -1,5 +1,9 @@
 # Change log
 
+## [3.0.1] - 2023.10.04:
+### Internal
+- Improved code.
+
 ## [3.0.0] - 2023.10.03:
 ### Internal
 - Improved code.
