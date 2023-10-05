@@ -1,5 +1,9 @@
 # Change log
 
+## [3.1.1] - 2023.10.05:
+### Fixed
+- Fixed points and weight calculation.
+
 ## [3.1.0] - 2023.10.04:
 ### Changed
 - For options of type `checkbox`, the prefix `=` is treated as `+`.
