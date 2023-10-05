@@ -1,7 +1,10 @@
 # Change log
 
-## [3.0.2] - 2023.10.04:
+## [3.1.0] - 2023.10.04:
+### Changed
+- For options of type `checkbox`, the prefix `=` is treated as `+`.
 ### Internal
+- Fixed consequences of inattention :)
 - Improved code.
 
 ## [3.0.0] - 2023.10.03:

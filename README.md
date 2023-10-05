@@ -1,7 +1,7 @@
 # Equal Sign
 
 ## Description
-**Equal Sign** is an  extension that allows to use the equals prefix in product option prices.  
+**Equal Sign** is an OpenCart extension that allows use the equal sign as a prefix for product options.  
 Compatible with OpenCart 2.x-3.x.  
  [Read more...](./module/README.md)
 

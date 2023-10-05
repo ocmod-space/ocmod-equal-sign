@@ -1,11 +1,12 @@
 # Equal Sign
 
 ## Description
-**Equal Sign** is an extension that allows the equality prefix to be used in product options.  
+**Equal Sign** is an OpenCart extension that allows use the equal sign as a prefix for product options.  
 Compatible with OpenCart 2.x-3.x.
 
 ## Features
-* Allows to use the equality sign as a prefix in product options.
+* Ability to use the equal sign as a prefix for product options.
+* For options of type `checkbox`, the prefix `=` is treated as `+`.
 * Does not modify system files (OCMOD).
 
 ## Live demo
