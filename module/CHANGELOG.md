@@ -1,5 +1,9 @@
 # Change log
 
+## [3.1.2] - 2023.10.20:
+### Internal
+- Improved compatibility.
+
 ## [3.1.1] - 2023.10.05:
 ### Fixed
 - Fixed points and weight calculation.
