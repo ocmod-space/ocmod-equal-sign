@@ -3,6 +3,6 @@ doc
 pic
 src
 zip
-*.code-workspace
+equal-sign.code-workspace
 *.fclignore
 *.pwd
