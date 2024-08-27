@@ -14,7 +14,7 @@ Compatible with OpenCart 2.x-3.x.
 * [Administration](https://demo.ocmod.space/a/admin/index.php?route=catalog/product).
 
 ## License
-Licensed under the [MIT License](https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/LICENSE.txt).
+[End-user license agreement](https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/EULA.txt).
 
 ## Links
 * **Equal Sign** on [**OpenCart Marketplace**](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=34383).

@@ -1,6 +1,6 @@
 <?php
 
-define('VERSION', '3.1.2');
+define('VERSION', '3.2.0');
 define('YEAR', '2019');
 
 define('AUTHOR', 'Andrii Burkatskyi');
@@ -17,6 +17,6 @@ define('OCMLINK2', 'https://www.opencart.com/index.php?route=marketplace/extensi
 define('GITLINK', 'https://github.com/ocmod-space/ocmod-equal-sign');
 define('XMLLINK', 'https://www.opencart.com/index.php?route=marketplace/extension&amp;filter_member=ocmod.space');
 
-define('LICENSE0', 'https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/LICENSE.txt');
+define('LICENSE0', 'https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/EULA.txt');
 define('LICENSE1', 'https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/addons/journal/EULA.txt');
 define('LICENSE2', 'https://raw.githubusercontent.com/ocmod-space/ocmod-equal-sign/main/addons/poco/EULA.txt');

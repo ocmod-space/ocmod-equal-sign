@@ -1,5 +1,9 @@
 # Change log
 
+## [3.2.0] - 2024.08.27:
+### Internal
+- Now it paid.
+
 ## [3.1.2] - 2023.10.20:
 ### Internal
 - Improved compatibility.
